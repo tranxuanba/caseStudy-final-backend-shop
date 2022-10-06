@@ -1,6 +1,6 @@
 package com.casestudy.model.dto;
 
-import com.example.demo_spring_security.models.Role;
+import com.casestudy.model.UserRole;
 
 import java.util.Set;
 
@@ -8,9 +8,9 @@ public class UserToken {
     private long id;
     private String username;
     private String token;
-    private Set<Role> roles;
+    private Set<UserRole> roles;
 
-    public UserToken(long id, String username, String token, Set<Role> roles) {
+    public UserToken(long id, String username, String token, Set<UserRole> roles) {
         this.id = id;
         this.username = username;
         this.token = token;
@@ -44,11 +44,11 @@ public class UserToken {
         this.token = token;
     }
 
-    public Set<Role> getRoles() {
+    public Set<UserRole> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<Role> roles) {
+    public void setRoles(Set<UserRole> roles) {
         this.roles = roles;
     }
 }

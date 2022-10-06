@@ -17,12 +17,12 @@ public class ShopService implements IShopService {
     private ShopRepository shopRepository;
 
     @Override
-    public List findALl() {
+    public List findAll() {
         return null;
     }
 
     @Override
-    public Page findALl(Pageable pageable) {
+    public Page findAll(Pageable pageable) {
         return null;
     }
 

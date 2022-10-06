@@ -16,12 +16,12 @@ public class ProductService implements IProductService{
     private ProductRepository productRepository;
 
     @Override
-    public List<Product> findALl() {
+    public List<Product> findAll() {
         return (List<Product>) productRepository.findAll();
     }
 
     @Override
-    public Page<Product> findALl(Pageable pageable) {
+    public Page<Product> findAll(Pageable pageable) {
         return productRepository.findAll(pageable);
     }
 

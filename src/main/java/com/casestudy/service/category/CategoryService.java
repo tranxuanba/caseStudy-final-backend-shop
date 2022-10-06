@@ -16,12 +16,12 @@ public class CategoryService implements ICategoryService{
     private CategoryRepository categoryRepository;
 
     @Override
-    public List<Category> findALl() {
+    public List<Category> findAll() {
         return (List<Category>) categoryRepository.findAll();
     }
 
     @Override
-    public Page<Category> findALl(Pageable pageable) {
+    public Page<Category> findAll(Pageable pageable) {
         return null;
     }
 

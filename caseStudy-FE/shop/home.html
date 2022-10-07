@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{shop/layouts/master_layout :: master_layout(
+                                                ~{::title},
+                                                ~{:: #main}
+                                               )}">
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+<main id="main" >
+    <h2 th:text="'Wellcome: '+${currentUser.name}"></h2>
+</main>
+
+</body>
+</html>

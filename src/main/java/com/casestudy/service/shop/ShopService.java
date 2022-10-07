@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ShopService implements IShopService {
@@ -17,18 +18,18 @@ public class ShopService implements IShopService {
     private ShopRepository shopRepository;
 
     @Override
-    public List findAll() {
-        return null;
-    }
-
-    @Override
     public Page findAll(Pageable pageable) {
-        return null;
+        return shopRepository.findAll(pageable);
     }
 
     @Override
-    public Object findById(Long id) {
-        return null;
+    public Iterable findAll() {
+        return shopRepository.findAll();
+    }
+
+    @Override
+    public Optional findById(Long id) {
+        return shopRepository.findById(id);
     }
 
     @Override
@@ -37,8 +38,8 @@ public class ShopService implements IShopService {
     }
 
     @Override
-    public void deleteById(Long id) {
-
+    public void remove(Long id) {
+        shopRepository.deleteById(id);
     }
 
     @Override

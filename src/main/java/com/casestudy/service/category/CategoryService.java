@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoryService implements ICategoryService{
@@ -16,18 +17,18 @@ public class CategoryService implements ICategoryService{
     private CategoryRepository categoryRepository;
 
     @Override
-    public List<Category> findAll() {
-        return (List<Category>) categoryRepository.findAll();
-    }
-
-    @Override
     public Page<Category> findAll(Pageable pageable) {
         return null;
     }
 
     @Override
-    public Category findById(Long id) {
-        return categoryRepository.findById(id).get();
+    public Iterable<Category> findAll() {
+        return categoryRepository.findAll();
+    }
+
+    @Override
+    public Optional<Category> findById(Long id) {
+        return categoryRepository.findById(id);
     }
 
     @Override
@@ -36,6 +37,8 @@ public class CategoryService implements ICategoryService{
     }
 
     @Override
-    public void deleteById(Long id) {
+    public void remove(Long id) {
+        categoryRepository.deleteById(id);
     }
 }
+

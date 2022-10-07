@@ -88,14 +88,13 @@
         let billDetail = a.attr("href");
         $.ajax({
             type: "DELETE",
-            url: "/cart/delete/" + billDetail,
+            url: "http://localhost:8095/cart/delete" + billDetail,
             success: function () {
                 a.parent().parent().remove()
             }
         });
         getTotalMoney();
         event.preventDefault();
-
     }
 
     function checkout() {

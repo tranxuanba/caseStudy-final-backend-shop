@@ -64,17 +64,17 @@ public class CartController {
 //        modelAndView.addObject("productInCarts", productInCarts);
 //        return modelAndView;
 //    }
-//    @GetMapping("/getCart")
-//    public ResponseEntity<BillDetail> findProductOnCart() {
-//        LoginUser currentUser = this.getCurrentUser();
-//        List<BillDetail> productInCarts = new ArrayList<>();
-//        List<Bill> billList = billService.findBillNotPayByUserId(currentUser.getId());
-//        for (Bill b : billList) {
-//            List<BillDetail> billDetailList = billDetailService.findALlByBill(b);
-//            productInCarts.addAll(billDetailList);
-//        }
-//        return new ResponseEntity<>(productInCarts.get(),HttpStatus.OK);
-//    }
+    @GetMapping("/getCart")
+    public ResponseEntity<List<BillDetail>> findProductOnCart() {
+        LoginUser currentUser = this.getCurrentUser();
+        List<BillDetail> productInCarts = new ArrayList<>();
+        List<Bill> billList = billService.findBillNotPayByUserId(currentUser.getId());
+        for (Bill b : billList) {
+            List<BillDetail> billDetailList = billDetailService.findALlByBill(b);
+            productInCarts.addAll(billDetailList);
+        }
+        return new ResponseEntity<>(productInCarts,HttpStatus.OK);
+    }
 
     @PostMapping("/add-to-cart")
     public ResponseEntity<BillDetail> addToCart(@RequestBody BillDetail billDetail) {

@@ -153,7 +153,6 @@ public class CartController {
         LoginUser currentUser = this.getCurrentUser();
         List<Bill> billList = billService.findBillNotPayByUserId(currentUser.getId());
 
-
         for (Bill bill : billList) {
             //with the pay bill, set status to true(payed)
             bill.setStatus(true);

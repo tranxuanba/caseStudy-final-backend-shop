@@ -3,6 +3,7 @@ package com.casestudy.service;
 import com.casestudy.model.LoginUser;
 import com.casestudy.repository.IAppUserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -34,4 +35,19 @@ public class AppUserService implements UserDetailsService {
     public LoginUser save(LoginUser loginUser){
         return iAppUserRepo.save(loginUser);
     }
+    public LoginUser getCurrentUser() {
+        LoginUser loginUser;
+        String name;
+        Object ob = SecurityContextHolder.getContext().getAuthentication();
+        if (ob instanceof UserDetails) {
+            name = ((UserDetails)ob).getUsername();
+        }else {
+            name = ob.toString();
+        }
+        loginUser = this.findByUserName(name);
+        return loginUser;
+    }
+//    public LoginUser getUserByUserName(String username) {
+//        return appUserRepository.getLoginUserByUsername(username);
+//    }
 }

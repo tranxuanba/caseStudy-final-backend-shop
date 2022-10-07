@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<body>
+<div id="layoutSidenav_nav" th:fragment="menu">
+    <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+        <div class="sb-sidenav-menu">
+            <div class="nav">
+                <div class="sb-sidenav-menu-heading">Trang chủ</div>
+                <a class="nav-link" href="/dashboard">
+                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    Dashboard
+                </a>
+                <div class="sb-sidenav-menu-heading">Quản lý</div>
+                <a class="nav-link" href="/admin/list">
+                    <div style="display: flex" sec:authorize="hasRole('ADMIN')">
+                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                        List Manager
+                    </div>
+                </a>
+                <a class="nav-link" href="/products">
+                    <div style="display: flex" sec:authorize="hasRole('SHOP')">
+                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                        List Product
+                    </div>
+                </a>
+                <!--                                <a class="nav-link" href="/orders">-->
+                <!--                                    <div style="display: flex" sec:authorize="hasRole('SHOP')">-->
+                <!--                                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>-->
+                <!--                                        Đơn hàng-->
+                <!--                                    </div>-->
+                <!--                                </a>-->
+                <a class="nav-link" href="/statistical/month">
+                    <div style="display: flex" sec:authorize="hasRole('SHOP')">
+                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                        Statistical by month
+                    </div>
+                </a>
+            </div>
+        </div>
+    </nav>
+</div>
+</body>
+</html>

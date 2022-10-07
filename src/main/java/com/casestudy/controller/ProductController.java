@@ -36,37 +36,37 @@ public class ProductController {
         List<Product> productList = (List<Product>) productService.findAll();
         return new ResponseEntity<>(productList, HttpStatus.OK);
     }
-
-    @ModelAttribute("currentUser")
-    private LoginUser user() {
-        return AppUserService.getCurrentUser();
-    }
-
-    @ModelAttribute("categories")
-    public List<Category> categories() {
-        return CategoryService.findALl();
-    }
-    @ModelAttribute("currentShop")
-    private Shop shop() {
-        LoginUser currentUser = this.user();
-        Shop shop = shopService.findAllByLoginUser(currentUser);
-        return shop;
-    }
-
-    @GetMapping("/create")
-    public ModelAndView showCreate() {
-        ModelAndView modelAndView = new ModelAndView("shop/product/create");
-        modelAndView.addObject("products", new Product());
-        return modelAndView;
-    }
-
-    @PostMapping("/create")
-    public ModelAndView create(@ModelAttribute Product product) throws IOException {
-//        uploadFile(product);
-        product.setShop(this.shop());
-        productService.save(product);
-        ModelAndView modelAndView = new ModelAndView("shop/product/create", "products", new Product());
-        modelAndView.addObject("mess", "Tao moi thanh cong product ten la " + product.getName());
-        return modelAndView;
-    }
+//
+////    @ModelAttribute("currentUser")
+////    private LoginUser user() {
+////        return AppUserService.getCurrentUser();
+////    }
+////
+////    @ModelAttribute("categories")
+////    public List<Category> categories() {
+////        return CategoryService.findALl();
+////    }
+////    @ModelAttribute("currentShop")
+////    private Shop shop() {
+////        LoginUser currentUser = this.user();
+////        Shop shop = shopService.findAllByLoginUser(currentUser);
+////        return shop;
+////    }
+//
+//    @GetMapping("/create")
+//    public ModelAndView showCreate() {
+//        ModelAndView modelAndView = new ModelAndView("shop/product/create");
+//        modelAndView.addObject("products", new Product());
+//        return modelAndView;
+//    }
+//
+//    @PostMapping("/create")
+//    public ModelAndView create(@ModelAttribute Product product) throws IOException {
+////        uploadFile(product);
+//        product.setShop(this.shop());
+//        productService.save(product);
+//        ModelAndView modelAndView = new ModelAndView("shop/product/create", "products", new Product());
+//        modelAndView.addObject("mess", "Tao moi thanh cong product ten la " + product.getName());
+//        return modelAndView;
+//    }
 }

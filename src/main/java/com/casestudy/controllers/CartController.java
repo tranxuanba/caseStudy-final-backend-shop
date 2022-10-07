@@ -1,4 +1,4 @@
-package com.casestudy.controller;
+package com.casestudy.controllers;
 
 import org.springframework.stereotype.Controller;
 

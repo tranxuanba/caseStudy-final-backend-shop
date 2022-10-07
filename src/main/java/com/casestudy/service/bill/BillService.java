@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BillService implements IBillService {
@@ -15,18 +16,18 @@ public class BillService implements IBillService {
     private BillRepository billRepository;
 
     @Override
-    public List<Bill> findALl() {
+    public Page<Bill> findAll(Pageable pageable) {
+        return billRepository.findAll(pageable);
+    }
+
+    @Override
+    public Iterable<Bill> findAll() {
         return billRepository.findAll();
     }
 
     @Override
-    public Page<Bill> findALl(Pageable pageable) {
-        return  billRepository.findAll(pageable);
-    }
-
-    @Override
-    public Bill findById(Long id) {
-        return (Bill) billRepository.findById(id).get();
+    public Optional<Bill> findById(Long id) {
+        return billRepository.findById(id);
     }
 
     @Override
@@ -35,9 +36,10 @@ public class BillService implements IBillService {
     }
 
     @Override
-    public void deleteById(Long id) {
+    public void remove(Long id) {
         billRepository.deleteById(id);
     }
+
     @Override
     public List<Bill> findBillNotPayByUserId(Long userId){
         return billRepository.findBillNotPayByUserId(userId);

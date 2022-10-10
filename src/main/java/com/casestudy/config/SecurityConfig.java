@@ -35,8 +35,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/**").permitAll()
-                .and().authorizeRequests().anyRequest().authenticated()
-//               .and().authorizeRequests().anyRequest().authenticated()
+//                .and().authorizeRequests().anyRequest().authenticated()
+               .and().authorizeRequests().anyRequest().authenticated()
                 .and().csrf().disable();
 
 
@@ -46,7 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             CorsConfiguration configuration = new CorsConfiguration();
             configuration.applyPermitDefaultValues();
             configuration.addAllowedOriginPattern("*");
-//            configuration.addAllowedMethod(CorsConfiguration.ALL);
+            configuration.addAllowedMethod(CorsConfiguration.ALL);
             configuration.addAllowedMethod(HttpMethod.DELETE);
             configuration.addAllowedMethod(HttpMethod.GET);
             configuration.addAllowedMethod(HttpMethod.POST);

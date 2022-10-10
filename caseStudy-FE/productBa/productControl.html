@@ -39,31 +39,54 @@
 
 </head>
 <body style="padding-top: 40px; background-color: #f2fcff" >
-<h3>List Categorys</h3>
+<h3>List Products</h3>
 <form >
     <input type="text" id="search" name="search" placeholder="search">
-    <input type="submit" value="Search" onclick="searchCategory()">
+    <input type="submit" value="Search" onclick="searchProduct()">
 </form>
 <input type="hidden" id="id">
 <input id="name" placeholder="Name" >
+<input id="price" placeholder="Price" >
+<select name="category" id="category">
+    <option></option>
+</select>
+<select class="form-control" th:field="*{category.id}">
+    <option th:each="c : ${categories}" th:value="${c.id}"
+            th:text="${c.name}"></option>
+</select>
+<input id="description" placeholder="Description" >
+<input id="datetime" placeholder="Datetime" >
+<input id="quantity" placeholder="Quantity" >
+<input id="number" placeholder="Sold Number" >
+<input id="image" placeholder="Image" >
+<input id="rate" placeholder="Rate" >
+<input id="shopname" placeholder="Shop name" >
 <button onclick="create()">Create</button>
-<button onclick="editCategorys()">Edit</button>
-<table class="table" id="cate">
+<button onclick="editProducts()">Edit</button>
+<table class="table" id="products">
     <tr>
         <td scope="col">Id</td>
         <td scope="col"> Name</td>
+        <td scope="col">Price</td>
+        <td scope="col">Category</td>
+        <td scope="col">Description</td>
+        <td scope="col">Datetime</td>
+        <td scope="col">Quantity</td>
+        <td scope="col">Sold Number</td>
+        <td scope="col">Image</td>
+        <td scope="col">Rate</td>
+        <td scope="col">Shop Name</td>
         <td scope="col">Delete</td>
         <td scope="col">Edit</td>
     </tr>
     <tbody id="tbody">
-    <td>4</td>
-    <td>Ba dep trai</td>
     <td><a></a></td>
     <td><a></a></td>
     </tbody>
 </table>
 <script>
-    function showAllCategory() {
+
+    function choiceCate(){
         //1. lay du lieu tu phia backend
         $.ajax({
             //loai cua request: GET, POST, PUT, ....
@@ -73,22 +96,44 @@
             //xu ly luc thanh cong
             success: function (data) {
                 console.log(data)
+            }
+        })
+    }
+    function showAllProduct() {
+        //1. lay du lieu tu phia backend
+        $.ajax({
+            //loai cua request: GET, POST, PUT, ....
+            type: "GET",
+            //duong dan cua API
+            url: "http://localhost:8095/products",
+            //xu ly luc thanh cong
+            success: function (data) {
+                console.log(data)
                 //2. ve lai cai bang
                 let content ="";
                 for (let i = 0; i < data.length; i++) {
                     content+=`<tr><td>${data[i].id}</td>
         <td>${data[i].name}</td>
-        <td><a href="${data[i].id}" onclick="deleteCategory(this)">Delete</a></td>
-        <td><a href="${data[i].id}" onclick="editCategory(this)">Edit</a></td></tr>`;
+        <td>${data[i].price}</td>
+        <td>${data[i].category.name}</td>
+        <td>${data[i].description}</td>
+        <td>${data[i].date_time}</td>
+        <td>${data[i].quantity}</td>
+        <td>${data[i].soldNumber}</td>
+        <td>${data[i].image}</td>
+        <td>${data[i].rate}</td>
+        <td>${data[i].shop.name}</td>
+        <td><a href="${data[i].id}" onclick="deleteProduct(this)">Delete</a></td>
+        <td><a href="${data[i].id}" onclick="editProduct(this)">Edit</a></td></tr>`;
                 }
                 document.getElementById("tbody").innerHTML = content;
 
             }
         })
     }
-    showAllCategory();
+    showAllProduct();
 
-    function deleteCategory(element) {
+    function deleteProduct(element) {
         // lay id
         let id = element.getAttribute("href");
         //goi API phia backend
@@ -98,12 +143,12 @@
                 'Content-Type': 'application/json'
             },
             type: "DELETE",
-            url: "http://localhost:8095/categorys/"+ id,
+            url: "http://localhost:8095/products/"+ id,
             success: function (data){
                 console.log("Xoa thanh cong id " + id);
                 //xoa the
                 // thay doi giao dien
-                showAllCategory();
+                showAllProduct();
                 // id.parent().parent().remove();
             }
         })
@@ -113,6 +158,8 @@
     function create() {
         //lay ten
         let name = document.getElementById("name").value;
+        let price = document.getElementById("price").value;
+        let category = document.getElementById("name").value;
         //chuyen sang doi tuong
         let ob = {
             name: name

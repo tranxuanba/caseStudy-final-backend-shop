@@ -1,76 +1,31 @@
 package com.casestudy.model;
 
+//import com.casestudy.model.enums.Status;
+
+import com.casestudy.model.enums.Status;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "bills")
 public class Bill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long id;
+    private String userName;
+    private String password;
 
-    @ManyToOne
-    private Shop shop;
-
-
-
+    private LocalDate createdAt;
+    @Enumerated(EnumType.STRING)
+    private Status status;
     @ManyToOne
     private LoginUser loginUser;
-
-    private Double TotalMoney;
-
-    private Date date;
-
-    private Boolean status;
-
-    public Bill() {
-    }
-
-    public Shop getShop() {
-        return shop;
-    }
-
-    public void setShop(Shop shop) {
-        this.shop = shop;
-    }
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public LoginUser getLoginUser() {
-        return loginUser;
-    }
-
-    public void setLoginUser(LoginUser loginUser) {
-        this.loginUser = loginUser;
-    }
-
-    public Double getTotalMoney() {
-        return TotalMoney;
-    }
-
-    public void setTotalMoney(Double totalMoney) {
-        TotalMoney = totalMoney;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public Boolean getStatus() {
-        return status;
-    }
-
-    public void setStatus(Boolean status) {
-        this.status = status;
-    }
 }
+

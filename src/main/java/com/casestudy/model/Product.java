@@ -27,8 +27,8 @@ public class Product {
     private Long quantity;
     private String image;
 
-    @Transient
-    private MultipartFile imageMul;
+//    @Transient
+//    private MultipartFile imageMul;
     private Long soldNumber;
     private Double rate;
 
@@ -49,7 +49,7 @@ public class Product {
         this.date_time = date_time;
         this.quantity = quantity;
         this.image = image;
-        this.imageMul = imageMul;
+//        this.imageMul = imageMul;
         this.category = category;
         this.shop = shop;
     }
@@ -62,19 +62,19 @@ public class Product {
         this.date_time = date_time;
         this.quantity = quantity;
         this.image = image;
-        this.imageMul = imageMul;
+//        this.imageMul = imageMul;
         this.soldNumber = soldNumber;
         this.rate = rate;
         this.category = category;
     }
 
-    public MultipartFile getImageMul() {
-        return imageMul;
-    }
+//    public MultipartFile getImageMul() {
+//        return imageMul;
+//    }
 
-    public void setImageMul(MultipartFile imageMul) {
-        this.imageMul = imageMul;
-    }
+//    public void setImageMul(MultipartFile imageMul) {
+//        this.imageMul = imageMul;
+//    }
 
     public Shop getShop() {
         return shop;

@@ -16,6 +16,16 @@ public class LoginUser {
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<UserRole> roles;
 
+    public LoginUser() {
+    }
+
+    public LoginUser(long id, String username, String password, Set<UserRole> roles) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.roles = roles;
+    }
+
     public long getId() {
         return id;
     }

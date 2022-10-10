@@ -1,54 +1,31 @@
 package com.casestudy.model;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
+@Data
 @Entity
+@NoArgsConstructor
 public class BillDetail {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
+    @JoinColumn(nullable = false, name = "bills_id")
     private Bill bill;
 
     @ManyToOne
+    @JoinColumn(nullable = false, name = "product_id")
     private Product product;
 
-    private Long number;
+    private int number;
 
-    public BillDetail() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Bill getBill() {
-        return bill;
-    }
-
-    public void setBill(Bill bill) {
+    public BillDetail(Bill bill, Product product, int number) {
         this.bill = bill;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
         this.product = product;
-    }
-
-    public Long getNumber() {
-        return number;
-    }
-
-    public void setNumber(Long number) {
         this.number = number;
     }
 }

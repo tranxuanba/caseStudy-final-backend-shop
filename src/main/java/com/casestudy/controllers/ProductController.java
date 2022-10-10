@@ -3,6 +3,7 @@ package com.casestudy.controllers;
 import com.casestudy.model.Product;
 import com.casestudy.service.product.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,11 @@ import java.util.Optional;
 @RequestMapping("/products")
 @CrossOrigin("*")
 public class ProductController {
+
+//    @Value("${upload.path}")
+//    @Value("C:\\Users\\admin\\module4\\img\\")
+
+    private String upload;
     @Autowired
     private IProductService productService;
     @Autowired

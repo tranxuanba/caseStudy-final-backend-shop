@@ -1,25 +1,18 @@
-package com.casestudy.service.category;
+package com.casestudy.service.impl;
 
-import com.casestudy.model.Category;
-import com.casestudy.repository.CategoryRepository;
+import cg.casestudy4f0.model.entity.Category;
+import cg.casestudy4f0.repository.CategoryRepository;
+import cg.casestudy4f0.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CategoryService implements ICategoryService{
+public class CategoryServiceImpl implements CategoryService {
 
     @Autowired
     private CategoryRepository categoryRepository;
-
-    @Override
-    public Page<Category> findAll(Pageable pageable) {
-        return null;
-    }
 
     @Override
     public Iterable<Category> findAll() {
@@ -40,9 +33,4 @@ public class CategoryService implements ICategoryService{
     public void remove(Long id) {
         categoryRepository.deleteById(id);
     }
-    @Override
-    public Page<Category> findAllByName(String name, Pageable pageable) {
-        return categoryRepository.findAllByName(name, pageable);
-    }
 }
-

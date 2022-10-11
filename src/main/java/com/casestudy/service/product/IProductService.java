@@ -1,7 +1,6 @@
 package com.casestudy.service.product;
 
 import com.casestudy.model.Product;
-import com.casestudy.model.Shop;
 import com.casestudy.service.IService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

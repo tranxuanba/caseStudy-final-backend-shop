@@ -1,7 +1,6 @@
 package com.casestudy.repository;
 
 import com.casestudy.model.Product;
-import com.casestudy.model.Shop;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;

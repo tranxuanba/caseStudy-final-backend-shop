@@ -1,4 +1,4 @@
-package com.casestudy.model;
+package com.casestudy.model.entity;
 
 
 import lombok.Data;
@@ -18,7 +18,7 @@ public class CartItem {
     private Product product;
 
     @ManyToOne
-    private LoginUser loginUser;
+    private User user;
 
     private int quantity;
 }

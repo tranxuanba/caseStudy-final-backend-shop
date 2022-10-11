@@ -1,4 +1,5 @@
-package com.casestudy.model;
+package com.casestudy.model.entity;
+
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,14 +9,14 @@ import javax.persistence.*;
 @Data
 @Entity
 @NoArgsConstructor
-public class BillDetail {
+public class OrderDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(nullable = false, name = "bills_id")
-    private Bill bill;
+    @JoinColumn(nullable = false, name = "orders_id")
+    private Order order;
 
     @ManyToOne
     @JoinColumn(nullable = false, name = "product_id")
@@ -23,8 +24,8 @@ public class BillDetail {
 
     private int number;
 
-    public BillDetail(Bill bill, Product product, int number) {
-        this.bill = bill;
+    public OrderDetail(Order order, Product product, int number) {
+        this.order = order;
         this.product = product;
         this.number = number;
     }

@@ -1,8 +1,6 @@
 package com.casestudy.service.comment;
 
-import com.casestudy.model.LoginUser;
 import com.casestudy.model.Product;
-import com.casestudy.model.UserComment;
 import com.casestudy.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

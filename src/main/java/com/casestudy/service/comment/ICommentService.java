@@ -1,8 +1,6 @@
 package com.casestudy.service.comment;
 
-import com.casestudy.model.LoginUser;
 import com.casestudy.model.Product;
-import com.casestudy.model.UserComment;
 import com.casestudy.service.IService;
 
 import java.util.List;

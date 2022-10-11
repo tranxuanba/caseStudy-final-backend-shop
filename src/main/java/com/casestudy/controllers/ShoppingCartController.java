@@ -2,7 +2,6 @@ package com.casestudy.controllers;
 
 import com.casestudy.model.Bill;
 import com.casestudy.model.CartItem;
-import com.casestudy.model.LoginUser;
 //import com.casestudy.model.enums.Status;
 import com.casestudy.model.enums.Status;
 import com.casestudy.service.AppUserService;

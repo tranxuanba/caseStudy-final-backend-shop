@@ -1,8 +1,6 @@
 package com.casestudy.repository;
 
-import com.casestudy.model.LoginUser;
 import com.casestudy.model.Product;
-import com.casestudy.model.UserComment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

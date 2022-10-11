@@ -1,7 +1,6 @@
 package com.casestudy.service.impl;
 
 import com.casestudy.model.CartItem;
-import com.casestudy.model.LoginUser;
 import com.casestudy.model.Product;
 import com.casestudy.repository.CartItemRepository;
 import com.casestudy.repository.ProductRepository;

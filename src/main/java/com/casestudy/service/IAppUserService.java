@@ -1,6 +1,5 @@
 package com.casestudy.service;
 
-import com.casestudy.model.LoginUser;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.Optional;

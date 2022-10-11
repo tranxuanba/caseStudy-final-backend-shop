@@ -1,6 +1,5 @@
 package com.casestudy.controllers;
 
-import com.casestudy.model.LoginUser;
 import com.casestudy.service.AppUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

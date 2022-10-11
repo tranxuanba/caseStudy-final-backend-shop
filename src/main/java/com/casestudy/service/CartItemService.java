@@ -1,7 +1,6 @@
 package com.casestudy.service;
 
 import com.casestudy.model.CartItem;
-import com.casestudy.model.LoginUser;
 
 import java.util.List;
 

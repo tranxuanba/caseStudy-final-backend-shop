@@ -1,6 +1,5 @@
 package com.casestudy.service.shop;
 
-import com.casestudy.model.LoginUser;
 import com.casestudy.repository.ShopRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

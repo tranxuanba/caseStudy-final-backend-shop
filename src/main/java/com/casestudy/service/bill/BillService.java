@@ -1,6 +1,5 @@
 package com.casestudy.service.bill;
 
-import com.casestudy.model.Bill;
 import com.casestudy.repository.BillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

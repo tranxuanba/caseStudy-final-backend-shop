@@ -1,7 +1,5 @@
 package com.casestudy.service.billDetail;
 
-import com.casestudy.model.Bill;
-import com.casestudy.model.BillDetail;
 import com.casestudy.repository.BillDetailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

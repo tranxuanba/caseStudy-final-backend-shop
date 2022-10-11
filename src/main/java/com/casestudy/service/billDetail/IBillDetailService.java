@@ -1,7 +1,5 @@
 package com.casestudy.service.billDetail;
 
-import com.casestudy.model.Bill;
-import com.casestudy.model.BillDetail;
 import com.casestudy.service.IService;
 
 import java.util.List;

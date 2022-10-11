@@ -1,7 +1,5 @@
 package com.casestudy.controllers;
 
-import com.casestudy.model.Bill;
-import com.casestudy.model.BillDetail;
 import com.casestudy.model.User;
 import com.casestudy.model.Product;
 import com.casestudy.service.AppUserService;

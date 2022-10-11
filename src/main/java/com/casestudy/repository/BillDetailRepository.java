@@ -1,7 +1,5 @@
 package com.casestudy.repository;
 
-import com.casestudy.model.Bill;
-import com.casestudy.model.BillDetail;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

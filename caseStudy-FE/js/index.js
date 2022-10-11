@@ -42,7 +42,7 @@ const handlePushCart = (id, qty = 1) => {
 
 //  BANNER-HEADING
 function title() {
-    const htmls = `<div class="hero__item set-bg" data-setbg="../static/img/banner.jpg">
+    const htmls = `<div class="hero__item set-bg" data-setbg="/caseStudy-FE/img/banner.jpg">
                         <div class="hero__text">
                             <span>Hoa quả sạch</span>
                             <h2>Cam kết <br>100% Organic</h2>
@@ -162,7 +162,7 @@ function displayProducts(product) {
     return `
     <div class="col-lg-3 col-md-4 col-sm-6">
         <div class="featured__item">
-            <div class="featured__item__pic set-bg" data-setbg="../static/img/${product.image}">
+            <div class="featured__item__pic set-bg" data-setbg="/caseStudy-FE/img/${product.image}">
                 <ul class="featured__item__pic__hover">
                     <li><a href="#"><i class="fa fa-heart"></i></a></li>
                     <li><a><i class="fa fa-retweet"></i></a></li>
@@ -267,7 +267,7 @@ function displayCart(item) {
     return `
     <tr>
         <td class="shoping__cart__item">
-            <img src="../static/img/${item.product.image}" alt="Lỗi ảnh">
+            <img src="/caseStudy-FE/img/${item.product.image}" alt="Lỗi ảnh">
                 <h5 onclick="detail(${item.product.id})">${item.product.name}</h5>
         </td>
         <td class="shoping__cart__price">
@@ -420,7 +420,7 @@ function detail(id) {
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__pic">
                         <div class="product__details__pic__item">
-                            <img class="product__details__pic__item--large" src="../static/img/${data.image}" alt="">
+                            <img class="product__details__pic__item--large" src="/caseStudy-FE/img/${data.image}" alt="">
                         </div>
                     </div>
                 </div>

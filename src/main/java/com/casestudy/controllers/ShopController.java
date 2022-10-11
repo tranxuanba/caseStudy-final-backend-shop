@@ -1,8 +1,5 @@
 package com.casestudy.controllers;
 
-import com.casestudy.model.Category;
-import com.casestudy.model.Shop;
-import com.casestudy.service.category.ICategoryService;
 import com.casestudy.service.shop.IShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

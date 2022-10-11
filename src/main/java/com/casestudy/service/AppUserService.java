@@ -1,10 +1,9 @@
 package com.casestudy.service;
 
-import com.casestudy.model.LoginUser;
+import com.casestudy.model.User;
 import com.casestudy.repository.IAppUserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -19,24 +18,24 @@ public class AppUserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        LoginUser loginUser = iAppUserRepo.findByUsername(username);
-        return new User(loginUser.getUsername(), loginUser.getPassword(), loginUser.getRoles());
+        User loginUser = iAppUserRepo.findByUsername(username);
+        return new org.springframework.security.core.userdetails.User(loginUser.getUsername(), loginUser.getPassword(), loginUser.getRoles());
     }
 
-    public List<LoginUser> getAll(){
-        return (List<LoginUser>) iAppUserRepo.findAll();
+    public List<User> getAll(){
+        return (List<User>) iAppUserRepo.findAll();
     }
 
-    public LoginUser findByUserName(String username){
-        LoginUser loginUser = iAppUserRepo.findByUsername(username);
+    public User findByUserName(String username){
+        User loginUser = iAppUserRepo.findByUsername(username);
         return loginUser;
     }
 
-    public LoginUser save(LoginUser loginUser){
+    public User save(User loginUser){
         return iAppUserRepo.save(loginUser);
     }
-    public LoginUser getCurrentUser() {
-        LoginUser loginUser;
+    public User getCurrentUser() {
+        User loginUser;
         String name;
         Object ob = SecurityContextHolder.getContext().getAuthentication();
         if (ob instanceof UserDetails) {

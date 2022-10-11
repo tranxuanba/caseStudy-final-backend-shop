@@ -16,7 +16,7 @@ public class Bill {
 
 
     @ManyToOne
-    private LoginUser loginUser;
+    private User loginUser;
 
     private Double TotalMoney;
 
@@ -42,11 +42,11 @@ public class Bill {
         this.id = id;
     }
 
-    public LoginUser getLoginUser() {
+    public User getLoginUser() {
         return loginUser;
     }
 
-    public void setLoginUser(LoginUser loginUser) {
+    public void setLoginUser(User loginUser) {
         this.loginUser = loginUser;
     }
 

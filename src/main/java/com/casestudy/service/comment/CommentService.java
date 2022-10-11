@@ -1,8 +1,8 @@
 package com.casestudy.service.comment;
 
-import com.casestudy.model.LoginUser;
+import com.casestudy.model.User;
 import com.casestudy.model.Product;
-import com.casestudy.model.UserComment;
+import com.casestudy.model.Review;
 import com.casestudy.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,22 +19,22 @@ public class CommentService implements ICommentService{
     CommentRepository commentRepository;
 
     @Override
-    public Page<UserComment> findAll(Pageable pageable) {
+    public Page<Review> findAll(Pageable pageable) {
         return null;
     }
 
     @Override
-    public Iterable<UserComment> findAll() {
+    public Iterable<Review> findAll() {
         return null;
     }
 
     @Override
-    public Optional<UserComment> findById(Long id) {
+    public Optional<Review> findById(Long id) {
         return Optional.empty();
     }
 
     @Override
-    public UserComment save(UserComment userComment) {
+    public Review save(Review userComment) {
         return commentRepository.save(userComment);
     }
 
@@ -44,12 +44,12 @@ public class CommentService implements ICommentService{
     }
 
     @Override
-    public List<UserComment> findUserCommentByProduct(Product product) {
+    public List<Review> findUserCommentByProduct(Product product) {
         return commentRepository.findUserCommentByProduct(product);
     }
 
     @Override
-    public List<UserComment> findUserCommentByLoginUser(LoginUser loginUser) {
+    public List<Review> findUserCommentByLoginUser(User loginUser) {
         return commentRepository.findUserCommentByLoginUser(loginUser);
     }
 }

@@ -1,8 +1,7 @@
 package com.casestudy.controllers;
 
-import com.casestudy.model.LoginUser;
-import com.casestudy.model.UserRole;
-import com.casestudy.model.dto.UserToken;
+import com.casestudy.model.User;
+import com.casestudy.model.Role;
 import com.casestudy.service.AppUserService;
 import com.casestudy.service.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,14 +33,14 @@ public class LoginAPI {
 
 
     @PostMapping("/login")
-    public ResponseEntity<UserToken>  login(@RequestBody LoginUser loginUser){
+    public ResponseEntity<UserToken>  login(@RequestBody User loginUser){
         try {
             // Tạo ra 1 đối tượng Authentication.
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(loginUser.getUsername(), loginUser.getPassword()));
             SecurityContextHolder.getContext().setAuthentication(authentication);
             String token = jwtService.createToken(authentication);
-            LoginUser loginUser1 = appUserService.findByUserName(loginUser.getUsername());
+            User loginUser1 = appUserService.findByUserName(loginUser.getUsername());
             UserToken userToken1 = new UserToken(loginUser1.getId(),loginUser1.getUsername(),token,loginUser1.getRoles());
             return new ResponseEntity<>(userToken1,HttpStatus.ACCEPTED);
         } catch (Exception e) {
@@ -51,9 +50,9 @@ public class LoginAPI {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<LoginUser> register(@RequestBody LoginUser loginUser){
-        Set<UserRole> roles = new HashSet<>();
-        UserRole userRole = new UserRole();
+    public ResponseEntity<User> register(@RequestBody User loginUser){
+        Set<Role> roles = new HashSet<>();
+        Role userRole = new Role();
         userRole.setId(2);
         roles.add(userRole);
         loginUser.setRoles(roles);

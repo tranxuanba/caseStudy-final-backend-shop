@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-public class UserComment {
+public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -13,14 +13,14 @@ public class UserComment {
     @ManyToOne
     private Product product;
     @ManyToOne
-    private LoginUser loginUser;
+    private User loginUser;
     public Date getDate() {
         return date;
     }
     public void setDate(Date date) {
         this.date = date;
     }
-    public UserComment() {
+    public Review() {
     }
     public Long getId() {
         return id;
@@ -40,10 +40,10 @@ public class UserComment {
     public void setProduct(Product product) {
         this.product = product;
     }
-    public LoginUser getLoginUser() {
+    public User getLoginUser() {
         return loginUser;
     }
-    public void setLoginUser(LoginUser loginUser) {
+    public void setLoginUser(User loginUser) {
         this.loginUser = loginUser;
     }
 }

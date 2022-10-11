@@ -95,4 +95,8 @@ public class ShoppingCartController {
         mailSender.send(simpleMailMessage);
         return new ResponseEntity<>(payCheck,HttpStatus.OK);
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> dev
 }

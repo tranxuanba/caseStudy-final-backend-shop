@@ -19,13 +19,15 @@ public class Bill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String userName;
-    private String password;
-
+    private String fullName;
+    private String address;
+    private String email;
+    private String phone;
+    private String note;
     private LocalDate createdAt;
     @Enumerated(EnumType.STRING)
     private Status status;
     @ManyToOne
-    private LoginUser loginUser;
+    private User user;
 }
 

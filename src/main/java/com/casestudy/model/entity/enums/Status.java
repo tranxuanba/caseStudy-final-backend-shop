@@ -1,4 +1,4 @@
-package com.casestudy.model.enums;
+package com.casestudy.model.entity.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

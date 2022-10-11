@@ -1,8 +1,6 @@
-package com.casestudy.model;
+package com.casestudy.model.entity;
 
-//import com.casestudy.model.enums.Status;
-
-import com.casestudy.model.enums.Status;
+import com.casestudy.model.entity.enums.Status;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,12 +8,13 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.time.LocalDate;
 
+
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "bills")
-public class Bill {
+@Table(name = "orders")
+public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,4 +29,3 @@ public class Bill {
     @ManyToOne
     private User user;
 }
-

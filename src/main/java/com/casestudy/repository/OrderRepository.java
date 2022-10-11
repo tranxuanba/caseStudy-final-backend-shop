@@ -1,9 +1,10 @@
 package com.casestudy.repository;
 
-import com.casestudy.model.Bill;
+import cg.casestudy4f0.model.entity.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
-public interface BillRepository extends JpaRepository<Bill,Long> {
+public interface OrderRepository extends JpaRepository<Order, Long> {
 }

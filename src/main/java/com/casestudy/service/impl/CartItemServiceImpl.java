@@ -2,7 +2,6 @@ package com.casestudy.service.impl;
 
 import com.casestudy.model.CartItem;
 import com.casestudy.model.Product;
-import com.casestudy.repository.CartItemRepository;
 import com.casestudy.repository.ProductRepository;
 import com.casestudy.service.CartItemService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -63,11 +63,15 @@
     </tbody>
 </table>
 <script>
+    let token = localStorage.getItem("token");
     function showAllCategory() {
         //1. lay du lieu tu phia backend
         $.ajax({
             //loai cua request: GET, POST, PUT, ....
             type: "GET",
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader ("Authorization", "Bearer " + token);
+            },
             //duong dan cua API
             url: "http://localhost:8095/categorys",
             //xu ly luc thanh cong

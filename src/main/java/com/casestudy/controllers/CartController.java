@@ -2,7 +2,7 @@ package com.casestudy.controllers;
 
 import com.casestudy.model.Bill;
 import com.casestudy.model.BillDetail;
-import com.casestudy.model.LoginUser;
+import com.casestudy.model.User;
 import com.casestudy.model.Product;
 import com.casestudy.service.AppUserService;
 import com.casestudy.service.bill.IBillService;
@@ -12,9 +12,7 @@ import com.casestudy.service.product.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -41,7 +39,7 @@ public class CartController {
     private IBillDetailService billDetailService;
 
     @ModelAttribute("currentUser")
-    private LoginUser getCurrentUser() {
+    private User getCurrentUser() {
         return userService.getCurrentUser();
     }
 
@@ -66,7 +64,7 @@ public class CartController {
 //    }
     @GetMapping("/getCart")
     public ResponseEntity<List<BillDetail>> findProductOnCart() {
-        LoginUser currentUser = this.getCurrentUser();
+        User currentUser = this.getCurrentUser();
         List<BillDetail> productInCarts = new ArrayList<>();
         List<Bill> billList = billService.findBillNotPayByUserId(currentUser.getId());
         for (Bill b : billList) {
@@ -78,13 +76,13 @@ public class CartController {
 
     @PostMapping("/add-to-cart")
     public ResponseEntity<BillDetail> addToCart(@RequestBody BillDetail billDetail) {
-        LoginUser currentUser = this.getCurrentUser();
+        User currentUser = this.getCurrentUser();
         List<Bill> bills = billService.findBillNotPayByUserId(currentUser.getId());
         BillDetail billDetail1 = setBillDetail(billDetail, currentUser, bills);
         billDetailService.save(billDetail1);
         return new ResponseEntity<>(billDetail1, HttpStatus.OK);
     }
-    private BillDetail setBillDetail(BillDetail billDetail, LoginUser currentUser, List<Bill> bills) {
+    private BillDetail setBillDetail(BillDetail billDetail, User currentUser, List<Bill> bills) {
 
         if (bills.size() > 0) {
             for (int i = 0; i < bills.size(); i++) {
@@ -150,7 +148,7 @@ public class CartController {
 
     @PutMapping("/checkout")
     public ResponseEntity<List<BillDetail>> checkout() {
-        LoginUser currentUser = this.getCurrentUser();
+        User currentUser = this.getCurrentUser();
         List<Bill> billList = billService.findBillNotPayByUserId(currentUser.getId());
 
         for (Bill bill : billList) {
@@ -188,7 +186,7 @@ public class CartController {
     }
 
     private List<BillDetail> getListBillDetailOfCurrentUser() {
-        LoginUser currentUser = this.getCurrentUser();
+        User currentUser = this.getCurrentUser();
         List<BillDetail> productInCarts = new ArrayList<>();
         List<Bill> billList = billService.findBillNotPayByUserId(currentUser.getId());
         for (Bill b : billList) {

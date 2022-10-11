@@ -1,8 +1,8 @@
 package com.casestudy.repository;
 
-import com.casestudy.model.LoginUser;
+import com.casestudy.model.User;
 import org.springframework.data.repository.CrudRepository;
 
-public interface IAppUserRepo extends CrudRepository<LoginUser, Long> {
-    LoginUser findByUsername(String username);
+public interface IAppUserRepo extends CrudRepository<User, Long> {
+    User findByUsername(String username);
 }

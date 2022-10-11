@@ -1,6 +1,6 @@
 package com.casestudy.controllers;
 
-import com.casestudy.model.LoginUser;
+import com.casestudy.model.User;
 import com.casestudy.service.AppUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,7 +22,7 @@ public class UserController {
     AppUserService appUserService;
 
     @GetMapping
-    public ResponseEntity<List<LoginUser>> getAll(){
+    public ResponseEntity<List<User>> getAll(){
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         return new ResponseEntity<>(appUserService.getAll(), HttpStatus.OK);

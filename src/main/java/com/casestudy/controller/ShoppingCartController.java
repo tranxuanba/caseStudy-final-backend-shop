@@ -1,13 +1,13 @@
 package com.casestudy.controller;
 
 
-import cg.casestudy4f0.model.entity.CartItem;
-import cg.casestudy4f0.model.entity.Order;
-import cg.casestudy4f0.model.entity.User;
-import cg.casestudy4f0.model.entity.enums.Status;
-import cg.casestudy4f0.service.CartItemService;
-import cg.casestudy4f0.service.OrderService;
-import cg.casestudy4f0.service.UserService;
+import com.casestudy.model.entity.CartItem;
+import com.casestudy.model.entity.Order;
+import com.casestudy.model.entity.User;
+import com.casestudy.model.entity.enums.Status;
+import com.casestudy.service.CartItemService;
+import com.casestudy.service.OrderService;
+import com.casestudy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

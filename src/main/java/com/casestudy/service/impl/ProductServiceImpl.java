@@ -1,8 +1,8 @@
 package com.casestudy.service.impl;
 
-import cg.casestudy4f0.model.entity.Product;
-import cg.casestudy4f0.repository.ProductRepository;
-import cg.casestudy4f0.service.ProductService;
+import com.casestudy.model.entity.Product;
+import com.casestudy.repository.ProductRepository;
+import com.casestudy.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

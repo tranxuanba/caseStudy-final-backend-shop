@@ -1,13 +1,13 @@
 package com.casestudy.service.impl;
 
-import cg.casestudy4f0.model.entity.CartItem;
-import cg.casestudy4f0.model.entity.Order;
-import cg.casestudy4f0.model.entity.OrderDetail;
-import cg.casestudy4f0.model.entity.Product;
-import cg.casestudy4f0.repository.OrderDetailRepository;
-import cg.casestudy4f0.repository.OrderRepository;
-import cg.casestudy4f0.repository.ProductRepository;
-import cg.casestudy4f0.service.OrderService;
+import com.casestudy.model.entity.CartItem;
+import com.casestudy.model.entity.Order;
+import com.casestudy.model.entity.OrderDetail;
+import com.casestudy.model.entity.Product;
+import com.casestudy.repository.OrderDetailRepository;
+import com.casestudy.repository.OrderRepository;
+import com.casestudy.repository.ProductRepository;
+import com.casestudy.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;

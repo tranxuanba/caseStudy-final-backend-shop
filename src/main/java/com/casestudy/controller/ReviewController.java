@@ -1,7 +1,7 @@
 package com.casestudy.controller;
 
-import cg.casestudy4f0.model.entity.Review;
-import cg.casestudy4f0.service.ReviewService;
+import com.casestudy.model.entity.Review;
+import com.casestudy.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

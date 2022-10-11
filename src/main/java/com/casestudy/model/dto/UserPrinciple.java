@@ -1,7 +1,7 @@
 package com.casestudy.model.dto;
 
 
-import cg.casestudy4f0.model.entity.User;
+import com.casestudy.model.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

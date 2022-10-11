@@ -1,8 +1,8 @@
 package com.casestudy.service.impl;
 
-import cg.casestudy4f0.model.entity.Review;
-import cg.casestudy4f0.repository.ReviewRepository;
-import cg.casestudy4f0.service.ReviewService;
+import com.casestudy.model.entity.Review;
+import com.casestudy.repository.ReviewRepository;
+import com.casestudy.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

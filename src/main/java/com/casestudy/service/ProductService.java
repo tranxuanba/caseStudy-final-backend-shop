@@ -1,6 +1,6 @@
 package com.casestudy.service;
 
-import cg.casestudy4f0.model.entity.Product;
+import com.casestudy.model.entity.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

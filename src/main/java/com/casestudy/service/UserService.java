@@ -1,6 +1,6 @@
 package com.casestudy.service;
 
-import cg.casestudy4f0.model.entity.User;
+import com.casestudy.model.entity.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.Optional;

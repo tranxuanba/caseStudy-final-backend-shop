@@ -1,6 +1,6 @@
 package com.casestudy.model.entity;
 
-import com.casestudy.model.entity.enums.Status;
+import cg.casestudy4f0.model.entity.enums.Status;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

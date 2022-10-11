@@ -1,11 +1,12 @@
 package com.casestudy.service.impl;
 
-import com.casestudy.model.CartItem;
-import com.casestudy.model.LoginUser;
-import com.casestudy.model.Product;
-import com.casestudy.repository.CartItemRepository;
-import com.casestudy.repository.ProductRepository;
-import com.casestudy.service.CartItemService;
+
+import cg.casestudy4f0.model.entity.CartItem;
+import cg.casestudy4f0.model.entity.Product;
+import cg.casestudy4f0.model.entity.User;
+import cg.casestudy4f0.repository.CartItemRepository;
+import cg.casestudy4f0.repository.ProductRepository;
+import cg.casestudy4f0.service.CartItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,15 +14,37 @@ import java.util.List;
 
 @Service
 public class CartItemServiceImpl implements CartItemService {
+
     @Autowired
     private CartItemRepository cartRepo;
 
     @Autowired
     private ProductRepository productRepository;
 
+
+
     @Override
-    public List<CartItem>getCartItemByUser(LoginUser loginUser) {
-        return cartRepo.getCartItemByUser(loginUser);
+    public List<CartItem> getCartItemByUser(User user) {
+        return cartRepo.getCartItemByUser(user);
+    }
+
+    public void addCartItem(int quantity,Long productId,User user) {
+        Product product = productRepository.findById(productId).get();
+        CartItem item = cartRepo.findByUserAndProduct(user,product);
+        if(item != null) {
+            item.setQuantity(item.getQuantity() + quantity);
+        } else {
+            item = new CartItem();
+            item.setProduct(product);
+            item.setUser(user);
+            item.setQuantity(quantity);
+        }
+        cartRepo.save(item);
+    }
+
+    @Override
+    public void removeByUserId(Long id) {
+        cartRepo.removeByUserId(id);
     }
 
     @Override
@@ -33,25 +56,4 @@ public class CartItemServiceImpl implements CartItemService {
     public void deleteByUserIdAndProductId(Long userId, Long productId) {
         cartRepo.deleteByUserIdAndProductId(userId,productId);
     }
-
-    @Override
-    public void addCartItem(int quantity, Long productId, LoginUser loginUser) {
-        Product product = productRepository.findById(productId).get();
-        CartItem item = cartRepo.findByUserAndProduct(loginUser,product);
-        if(item != null) {
-            item.setQuantity(item.getQuantity() + quantity);
-        } else {
-            item = new CartItem();
-            item.setProduct(product);
-            item.setLoginUser(loginUser);
-            item.setQuantity(quantity);
-        }
-        cartRepo.save(item);
-    }
-
-    @Override
-    public void removeByUserId(Long id) {
-        cartRepo.removeByUserId(id);
-    }
-
 }

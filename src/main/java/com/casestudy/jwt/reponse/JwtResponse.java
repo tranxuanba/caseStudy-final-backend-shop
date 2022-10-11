@@ -7,10 +7,6 @@ import org.springframework.security.core.GrantedAuthority;
 
 import java.util.Collection;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> dev
 @AllArgsConstructor
 @Data
 public class JwtResponse {

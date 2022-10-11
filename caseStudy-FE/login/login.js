@@ -21,7 +21,17 @@ function login() {
         //xử lý khi thành công
         success: function (data) {
             localStorage.setItem("token", data);
-            location.href = "home.html"
+            localStorage.setItem("role",data.appRole[0].name);
+            localStorage.setItem("accountname",username);
+            // localStorage.setItem("username",getStudent());
+
+
+            if (data.appRole[0].name == "ROLE_ADMIN"){
+
+                location.href = "http://localhost:63342/casestudy-final-backend-shop/caseStudy-FE/productBa/productControl.html?_ijt=6aa9ksqtmjo3r06ds2bacitbhs&_ij_reload=RELOAD_ON_SAVE"
+            }else if (data.appRole[0].name == "ROLE_USER"){
+                location.href="http://localhost:63342/casestudy-final-backend-shop/caseStudy-FE/user/usersList.html?_ijt=6aa9ksqtmjo3r06ds2bacitbhs&_ij_reload=RELOAD_ON_SAVE"
+            }
         },
         error: function (err) {
             console.log(err)

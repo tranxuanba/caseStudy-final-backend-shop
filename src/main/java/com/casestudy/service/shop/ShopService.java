@@ -43,6 +43,11 @@ public class ShopService implements IShopService {
     }
 
     @Override
+    public Shop save(Shop shop) {
+        return shopRepository.save(shop);
+    }
+
+    @Override
     public Shop findAllByLoginUser(LoginUser loginUser) {
         return shopRepository.findAllByLoginUser(loginUser);
     }

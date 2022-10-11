@@ -73,7 +73,7 @@
         }
 
         input:focus{
-            outline: 0 0 0 0  !important;
+            /*outline: 0 0 0 0  !important;*/
             box-shadow: 0 0 0 0 !important;
 
         }
@@ -154,6 +154,51 @@
         </div>
     </div>
 </div>
+<script>
+    function login() {
+
+        let username1 = $("#username").val();
+        let password1 = $("#password").val();
+
+        let appUser = {
+            username: username1,
+            password: password1
+        }
+
+        $.ajax({
+            type: "POST",
+            headers: {
+                //kiểu dữ liệu nhận về
+                'Accept': 'application/json',
+                // kiểu truyền đi
+                'Content-Type': 'application/json'
+            },
+            url: "http://localhost:8095/login",
+            data: JSON.stringify(appUser),
+            //xử lý khi thành công
+            success: function (data) {
+                if (data !== undefined){
+                    console.log(data)
+                    localStorage.setItem("token", data.token);
+                    localStorage.setItem("data", JSON.stringify(data));
+                } else {
+                    window.location.href = "login.html";
+                }
+
+                if (data.roles[0].name === "ROLE_ADMIN"){
+                    location.href = "../category/list.html";
+                }
+                if (data.roles[0].name === "ROLE_USER"){
+                    console.log("hi")
+                    location.href = "../productBa/productControl.html";
+                }
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        })
+        event.preventDefault();
+    }
+</script>
 </body>
 </html>
-<script src="caseStudy-FE/login/login.js"></script>

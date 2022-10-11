@@ -47,20 +47,14 @@
 <input type="hidden" id="id">
 <input id="name" placeholder="Name" >
 <input id="price" placeholder="Price" >
-<select name="category" id="category">
-    <option></option>
-</select>
-<select class="form-control" th:field="*{category.id}">
-    <option th:each="c : ${categories}" th:value="${c.id}"
-            th:text="${c.name}"></option>
-</select>
-<input id="description" placeholder="Description" >
-<input id="datetime" placeholder="Datetime" >
-<input id="quantity" placeholder="Quantity" >
-<input id="number" placeholder="Sold Number" >
-<input id="image" placeholder="Image" >
+<select id="cate"></select>
+<input id="description" placeholder="Description">
+<input type="date" id="datetime" placeholder="Datetime">
+<input id="quantity" placeholder="Quantity">
+<input id="number" placeholder="Sold Number">
+<input id="image" placeholder="Image">
 <input id="rate" placeholder="Rate" >
-<input id="shopname" placeholder="Shop name" >
+<select id="shop"></select>
 <button onclick="create()">Create</button>
 <button onclick="editProducts()">Edit</button>
 <table class="table" id="products">
@@ -85,7 +79,6 @@
     </tbody>
 </table>
 <script>
-
     function choiceCate(){
         //1. lay du lieu tu phia backend
         $.ajax({
@@ -96,9 +89,38 @@
             //xu ly luc thanh cong
             success: function (data) {
                 console.log(data)
+                let conten ="";
+                for (let i = 0; i < data.length; i++) {
+                    console.log(data[i].name)
+                    conten+=`<option value="${data[i].id}">${data[i].name}</option>
+                   `;
+                }
+                document.getElementById("cate").innerHTML = conten;
             }
         })
     }
+    choiceCate();
+    function choiceShop(){
+        //1. lay du lieu tu phia backend
+        $.ajax({
+            //loai cua request: GET, POST, PUT, ....
+            type: "GET",
+            //duong dan cua API
+            url: "http://localhost:8095/shops",
+            //xu ly luc thanh cong
+            success: function (data) {
+                console.log(data)
+                let conten ="";
+                for (let i = 0; i < data.length; i++) {
+                    console.log(data[i].name)
+                    conten+=`<option value="${data[i].id}">${data[i].name}</option>
+                   `;
+                }
+                document.getElementById("shop").innerHTML = conten;
+            }
+        })
+    }
+    choiceShop();
     function showAllProduct() {
         //1. lay du lieu tu phia backend
         $.ajax({
@@ -159,10 +181,26 @@
         //lay ten
         let name = document.getElementById("name").value;
         let price = document.getElementById("price").value;
-        let category = document.getElementById("name").value;
+        let category = $('#cate').val();
+        let description = document.getElementById("description");
+        let date_time = document.getElementById("datetime");
+        let quantity = document.getElementById("quantity");
+        let soldnumber = document.getElementById("number");
+        let image = document.getElementById("image");
+        let rate = document.getElementById("rate");
+        let shopname = $('#shop').val();
         //chuyen sang doi tuong
         let ob = {
-            name: name
+            name: name,
+            price: price,
+            category: category,
+            description: description,
+            date_time: date_time,
+            quantity: quantity,
+            soldnumber: soldnumber,
+            image: image,
+            rate: rate,
+            shopname: shopname
         }
 
         $.ajax({
@@ -172,9 +210,10 @@
             },
             type: "POST",
             data: JSON.stringify(ob),
-            url: "http://localhost:8095/categorys",
+            url: "http://localhost:8095/products",
             success: function () {
-                showAllCategory();
+                console.log("thanh cong")
+                showAllProduct();
             }
         })
     }

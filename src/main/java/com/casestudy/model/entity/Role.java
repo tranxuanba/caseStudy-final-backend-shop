@@ -1,4 +1,5 @@
-package com.casestudy.model;
+package com.casestudy.model.entity;
+
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,4 +22,3 @@ public class Role implements GrantedAuthority {
         return getName();
     }
 }
-

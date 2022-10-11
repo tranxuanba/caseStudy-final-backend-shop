@@ -1,6 +1,6 @@
 package com.casestudy.service;
 
-import cg.casestudy4f0.model.entity.Review;
+import com.casestudy.model.entity.Review;
 
 import java.util.List;
 

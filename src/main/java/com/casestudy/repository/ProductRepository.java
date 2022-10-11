@@ -1,22 +1,13 @@
 package com.casestudy.repository;
 
-import com.casestudy.model.Product;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.PagingAndSortingRepository;
+import com.casestudy.model.entity.Product;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 
 @Repository
-public interface ProductRepository extends PagingAndSortingRepository<Product, Long> {
-    Page<Product> getAllByShop(Shop shop, Pageable pageable);
-
-    @Query(value = "select * from product", nativeQuery = true)
-    List<Product> showAllProduct();
-
-    //tim kiem theo ten
-    @Query(value = "select * from product where product.name like ?", nativeQuery = true)
-    List<Product> findProductByName(String name);
+public interface ProductRepository extends JpaRepository<Product, Long> {
+    Iterable<Product> findAllByCategory_Id(Long id);
+    Iterable<Product> findAllByNameContaining(String name);
+    Iterable<Product> findAllByPriceBetween(int min, int max);
 }

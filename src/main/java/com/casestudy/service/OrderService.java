@@ -1,8 +1,8 @@
 package com.casestudy.service;
 
 
-import cg.casestudy4f0.model.entity.CartItem;
-import cg.casestudy4f0.model.entity.Order;
+import com.casestudy.model.entity.CartItem;
+import com.casestudy.model.entity.Order;
 
 import java.util.List;
 

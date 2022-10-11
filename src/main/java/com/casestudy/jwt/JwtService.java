@@ -1,6 +1,6 @@
 package com.casestudy.jwt;
 
-import cg.casestudy4f0.model.dto.UserPrinciple;
+import com.casestudy.model.dto.UserPrinciple;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

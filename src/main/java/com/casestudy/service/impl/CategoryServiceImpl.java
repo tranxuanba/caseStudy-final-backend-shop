@@ -1,8 +1,8 @@
 package com.casestudy.service.impl;
 
-import cg.casestudy4f0.model.entity.Category;
-import cg.casestudy4f0.repository.CategoryRepository;
-import cg.casestudy4f0.service.CategoryService;
+import com.casestudy.model.entity.Category;
+import com.casestudy.repository.CategoryRepository;
+import com.casestudy.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

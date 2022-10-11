@@ -1,10 +1,10 @@
 package com.casestudy.config;
 
 
-import cg.casestudy4f0.jwt.JwtEntryPoint;
-import cg.casestudy4f0.jwt.JwtTokenFilter;
-import cg.casestudy4f0.jwt.UserAccessDeniedHandler;
-import cg.casestudy4f0.service.UserService;
+import com.casestudy.jwt.JwtEntryPoint;
+import com.casestudy.jwt.JwtTokenFilter;
+import com.casestudy.jwt.UserAccessDeniedHandler;
+import com.casestudy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

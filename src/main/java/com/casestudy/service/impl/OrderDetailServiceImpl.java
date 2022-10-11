@@ -1,8 +1,8 @@
 package com.casestudy.service.impl;
 
-import cg.casestudy4f0.model.entity.OrderDetail;
-import cg.casestudy4f0.repository.OrderDetailRepository;
-import cg.casestudy4f0.service.OrderDetailService;
+import com.casestudy.model.entity.OrderDetail;
+import com.casestudy.repository.OrderDetailRepository;
+import com.casestudy.service.OrderDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

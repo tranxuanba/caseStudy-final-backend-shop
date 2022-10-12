@@ -187,7 +187,7 @@ function cart() {
 
 //  LOAD-BREADCRUMB-TITLE
 const breadcrumbStore = (title,classname) => {
-    let htmls = `<section class="breadcrumb-section set-bg" data-setbg="../static/img/breadcrumb.jpg">
+    let htmls = `<section class="breadcrumb-section set-bg" data-setbg="/caseStudy-FE/img/breadcrumb.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -308,11 +308,12 @@ function removeItem(pid) {
 
 //  PAGES STORE-PRODUCT
 function store() {
-    event.preventDefault();
+
     breadcrumbStore("Store","product");
     contentStore();
     loadStore();
     handleImg();
+    event.preventDefault();
 }
 
 //  STORE-CONTENT
@@ -659,6 +660,29 @@ function loginModal() {
     $('#login-modal').attr("hidden",false);
     event.preventDefault()
 }
+function logoutModal(){
+    localStorage.clear();
+    loginModal();
+    window.location.href = "home.html";
+}
+function logoutModal1(){
+    localStorage.clear();
+    loginModal();
+    window.location.href = "home.html";
+}
+function checkLogin(){
+    let currentUser = JSON.parse(localStorage.getItem("user"));
+    console.log(currentUser)
+    console.log(currentUser.fullName);
+    if (currentUser === null){
+        $('#link-logout').hide();
+    }
+    else {
+        $('#link-login').hide();
+        $('#link-logout').val(currentUser.fullName)
+    }
+}
+// checkLogin();
 
 // AUTHORITY --> AJAX AUTH
 function handleLogin() {
@@ -682,14 +706,22 @@ function handleLogin() {
                 document.getElementById("error_login").innerHTML = "Tài khoản hoặc mật khẩu không đúng!"
                 return false;
             } else {
-                if(data.role[0].authority == "ROLE_USER") {
+                if(data.role[0].authority === "ROLE_USER") {
                     $('#link-login').remove();
                     $('#login-modal').remove();
                     localStorage.setItem("token", data.token);
                     localStorage.setItem("user", JSON.stringify(data));
-                    $('.header__top__right__auth').html(`<a style="color: #7fad39; font-weight: bold" >Chào mừng ${data.fullName}</a>`);
+                    $('.header__top__right__auth').html(`<a style="color: #7fad39; font-weight: bold"> Chào mừng ${data.fullName}</a>`);
+                    // $('.header__top__right__auth1').html(`<a style="color: #7fad39; font-weight: bold" >Logout</a>`);
                 } else {
-                    window.location.href = "admin.html";
+                    if (data.role[0].authority === "ROLE_ADMIN"){
+                        $('#link-login').remove();
+                        $('#login-modal').remove();
+                        localStorage.setItem("token", data.token);
+                        localStorage.setItem("user", JSON.stringify(data));
+                        window.location.href = "admin.html";
+                    }
+
                 }
             }
         }

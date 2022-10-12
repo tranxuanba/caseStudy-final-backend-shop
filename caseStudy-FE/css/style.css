@@ -346,6 +346,11 @@ ol {
 	opacity: 0.1;
 	content: "";
 }
+}
+a:hover, a:active {
+	background-color: red;
+}
+
 
 .header__top__right__language img {
 	margin-right: 6px;
@@ -397,14 +402,25 @@ ol {
 .header__top__right__auth {
 	display: inline-block;
 }
+.header__top__right__auth1 {
+	display: inline-block;
+}
 
 .header__top__right__auth a {
 	display: block;
 	font-size: 14px;
 	color: #1c1c1c;
 }
+.header__top__right__auth1 a {
+	display: block;
+	font-size: 14px;
+	color: #1c1c1c;
+}
 
 .header__top__right__auth a i {
+	margin-right: 6px;
+}
+.header__top__right__auth1 a i {
 	margin-right: 6px;
 }
 

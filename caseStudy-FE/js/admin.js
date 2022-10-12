@@ -87,12 +87,13 @@ function editProduct(id) {
             index = data.id;
             document.getElementById("form1").hidden = false;
             document.getElementById("form-button").onclick = function () {
-                editProductPost()
+                // editProductPost()
             };
             getCategory();
             // getProductByPage(0)
         }
-    });
+    })
+    event.preventDefault();
 }
 
 //hàm cập nhật thông tin product data
@@ -123,7 +124,9 @@ function editProductPost() {
         data: JSON.stringify(newProduct),
         url: `http://localhost:8095/api/products/${index}`,
         success: function () {
-            getProductByPage(0)
+            // getProductByPage(0)
+            // displayProduct(newProduct)
+            getProduct();
         }
     });
     event.preventDefault();

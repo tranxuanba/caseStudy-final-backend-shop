@@ -11,12 +11,24 @@
     <link rel="stylesheet" href="admin.css">
     <script defer src="/caseStudy-FE/js/upload.js"></script>
     <script defer src="/caseStudy-FE/js/admin.js"></script>
+    <script defer src="/caseStudy-FE/js/index.js"></script>
 </head>
 <body>
 <div class="container">
     <h1>Product List</h1>
-
+    <p><a style="background-color: #f44336;
+    border-radius: 10px;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;" href="admin.html">Admin home</a></p>
+<!--    <div class="header__top__right__auth1">-->
+<!--        <a id="link-logout" href="" onclick="logoutModal1()" data-toggle="modal" data-target="#login-modal" ><i class="fa fa-user"></i>Đăng xuất</a>-->
+<!--    </div>-->
+    <button class="btn btn-primary" onclick="logoutModal1()">Đăng xuất</button>
     <button class="btn btn-primary" onclick="displayFormCreate()">Create new product</button>
+    <button class="btn btn-primary" onclick="editProductPost()">Update product</button>
     <button class="btn btn-primary" onclick="getOrdersByPage()">Display Orders</button>
     <button class="btn btn-primary" id="btnProductList" onclick="getProductByPage(0)">Display Products</button>
 
@@ -30,6 +42,7 @@
                 <button class="btn btn-info" onclick="searchProduct()">Search</button>
             </div>
         </div>
+
     </form>
 
     <!--    table data-->

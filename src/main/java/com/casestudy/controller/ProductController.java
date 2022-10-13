@@ -51,22 +51,49 @@ public class ProductController {
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
-    @PutMapping("{id}")
+//    @PutMapping("{id}")
+//    public ResponseEntity<?> edit(@RequestPart("file")MultipartFile file,
+//                                     @RequestPart("product") Product product) {
+//        String fileName = file.getOriginalFilename();
+//        try {
+//            FileCopyUtils.copy(file.getBytes(), new File(upload + fileName));
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        product.setImage(file.getOriginalFilename());
+//        Category category = new Category();
+//        category.setId(product.getCategory().getId());
+//        product.setCategory(category);
+//        productService.save(product);
+//        return new ResponseEntity<>(product,HttpStatus.OK);
+//    }
+    @PostMapping("/{id}")
     public ResponseEntity<?> edit(@RequestPart("file")MultipartFile file,
-                                     @RequestPart("product") Product product) {
+                                  @RequestPart("product") Product product,
+                                  @PathVariable("id") Long id) {
         String fileName = file.getOriginalFilename();
         try {
             FileCopyUtils.copy(file.getBytes(), new File(upload + fileName));
         } catch (Exception e) {
             e.printStackTrace();
         }
-        product.setImage(file.getOriginalFilename());
-        Category category = new Category();
-        category.setId(product.getCategory().getId());
-        product.setCategory(category);
+
+        Product productOld =productService.findById(id).orElse(null);
+        if(productOld == null) {
+            return new ResponseEntity<>("Lỗi không tìm thấy id sản phẩm",HttpStatus.NOT_FOUND);
+
+        } else {
+            product.setId(productOld.getId());
+            product.setImage(file.getOriginalFilename());
+            Category category = new Category();
+            category.setId(product.getCategory().getId());
+            product.setCategory(category);
+        }
         productService.save(product);
         return new ResponseEntity<>(product,HttpStatus.OK);
     }
+
+
 
     @PostMapping("/upload1")
     public ResponseEntity<?> upload1(@RequestPart("file")MultipartFile file,

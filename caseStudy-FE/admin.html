@@ -28,7 +28,6 @@
 <!--    </div>-->
     <button class="btn btn-primary" onclick="logoutModal1()">Đăng xuất</button>
     <button class="btn btn-primary" onclick="displayFormCreate()">Create new product</button>
-    <button class="btn btn-primary" onclick="editProductPost()">Update product</button>
     <button class="btn btn-primary" onclick="getOrdersByPage()">Display Orders</button>
     <button class="btn btn-primary" id="btnProductList" onclick="getProductByPage(0)">Display Products</button>
 
@@ -79,7 +78,8 @@
             <label class="form-label">Category:</label>
             <div id="div-category"></div>
         </div>
-        <button type="submit" id="form-button" class="btn btn-primary" onclick="uploadFileFull()">Submit</button>
+        <button type="submit" id="form-button" class="btn btn-primary" onclick="uploadFileFull()">Create</button>
+        <button class="btn btn-primary" onclick="editProductPost()">Update product</button>
     </form>
 </div>
 </body>

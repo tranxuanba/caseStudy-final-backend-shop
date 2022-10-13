@@ -1,4 +1,4 @@
-const url = "http://localhost:8095/api"
+// const url = "http://localhost:8095/api"
 const token = localStorage.getItem("token");
 const user = JSON.parse(localStorage.getItem("user"))
 
@@ -33,7 +33,7 @@ const handlePushCart = (id, qty = 1) => {
             "Content-Type": "application/json"
         },
         type: "POST",
-        url: `${url}/cart/${user.id}/${id}/${qty}`,
+        url: `http://localhost:8095/api/cart/${user.id}/${id}/${qty}`,
         success: () => handleCartUpdate(),
         error: () => console.log("lỗi")
     })
@@ -56,9 +56,10 @@ function title() {
 
 //  UPDATE-CART-ICON --> AJAX-CART
 function handleCartUpdate() {
+    console.log("lolo")
     $.ajax({
         type: 'GET',
-        url: `${url}/cart/${user.id}`,
+        url: `http://localhost:8095/api/cart/${user.id}`,
         success: (data) => {
             const htmls = `
              <ul>
@@ -83,7 +84,7 @@ function handleCartUpdate() {
 function getCategories() {
     $.ajax({
         type: 'GET',
-        url: `${url}/categories`,
+        url: `http://localhost:8095/api/categories`,
         success: (data) => {
             const values = data.map(c => {
                 return `<li data-toggle="${c.id}" class="cate-${c.id}" onclick="handleCategory(${c.id})">${c.name}</li>`
@@ -113,7 +114,7 @@ function getCategories() {
 function handleCategory(id) {
     $.ajax({
         type: 'GET',
-        url: `${url}/products/category/${id}`,
+        url: `http://localhost:8095/api/products/category/${id}`,
         success: (data) => {
             $('li.active').removeClass('active')
             $(`.cate-${id}`).addClass("active")
@@ -128,7 +129,7 @@ function handleCategory(id) {
 function storeCategory(id) {
     $.ajax({
         type: 'GET',
-        url: `${url}/products/category/${id}`,
+        url: `http://localhost:8095/api/products/category/${id}`,
         success: (data) => {
             const htmls = data.map(p => displayProducts(p)).join("")
             breadcrumbStore("Store","product");
@@ -144,7 +145,7 @@ function storeCategory(id) {
 function preload() {
     $.ajax({
         type: 'GET',
-        url: `${url}/products`,
+        url: `http://localhost:8095/api/products`,
         success: (data) => {
             $('li.active').removeClass('active')
             $('.all').addClass("active")
@@ -210,7 +211,7 @@ const breadcrumbStore = (title,classname) => {
 function shoppingCart() {
     $.ajax({
         type: 'GET',
-        url: `${url}/cart/${user.id}`,
+        url: `http://localhost:8095/api/cart/${user.id}`,
         success: (data) => {
             let tbody = data.map(item => displayCart(item)).join("")
             console.log(tbody);
@@ -296,7 +297,7 @@ function removeItem(pid) {
     if(confirm("Bạn chắc chắn muốn xoá sản phẩm này ?")) {
         $.ajax({
             type: 'DELETE',
-            url: `${url}/cart/${user.id}/${pid}`,
+            url: `http://localhost:8095/api/cart/${user.id}/${pid}`,
             success: () => {
                 shoppingCart()
                 handleCartUpdate()
@@ -375,7 +376,7 @@ function contentStore () {
 function loadStore(page = 0) {
     $.ajax({
         type: 'GET',
-        url: `${url}/products/page?page=${page}`,
+        url: `http://localhost:8095/api/products/page?page=${page}`,
         success: (data) => {
             const htmls = data.content.map(p => displayProducts(p)).join("");
             let page = ""
@@ -395,7 +396,7 @@ function handleSearch() {
     let key = $('#keyword').val()
     $.ajax({
         type: 'GET',
-        url: `${url}/products/search?search=${key}`,
+        url: `http://localhost:8095/api/products/search?search=${key}`,
         success: (data) => {
             const htmls = data.map(p => displayProducts(p)).join("");
             breadcrumbStore("Store","product");
@@ -412,7 +413,7 @@ function handleSearch() {
 function detail(id) {
     $.ajax({
         type: 'GET',
-        url: `${url}/products/${id}`,
+        url: `http://localhost:8095/api/products/${id}`,
         success: (data) => {
             let check = data.quantity < 1 ? "Hết hàng" : "Còn hàng";
             const htmls = `
@@ -491,7 +492,7 @@ function detail(id) {
 function handleReviews (id) {
     $.ajax({
         type: 'GET',
-        url: `${url}/review/${id}`,
+        url: `http://localhost:8095/api/review/${id}`,
         success: (data) => {
             const htmls = `<div class="product__details__tab__desc">
                                     <h6>Products Infomation</h6>
@@ -513,7 +514,7 @@ function checkout() {
 function contentCheckout() {
     $.ajax({
         type: 'GET',
-        url: `${url}/cart/${user.id}`,
+        url: `http://localhost:8095/api/cart/${user.id}`,
         success: (data) => {
             let sum = data.reduce((total, p) => total + p.quantity * p.product.price, 0)
             const cart = data.map(item =>
@@ -614,7 +615,7 @@ function handleCheckoutSubmit () {
                 'Content-Type': 'application/json'
             },
             type: "POST",
-            url: `${url}/pay/${user.id}`,
+            url: `http://localhost:8095/api/pay/${user.id}`,
             data: JSON.stringify(order),
             success: (resp) => {
                 alert("Đặt hàng thành công, kiểm tra email để biết thêm chi tiết")
@@ -718,7 +719,7 @@ function handleLogin() {
                         $('#link-login').remove();
                         $('#login-modal').remove();
                         localStorage.setItem("token", data.token);
-                        localStorage.setItem("user", JSON.stringify(data));
+                        localStorage.setItem("admin", JSON.stringify(data));
                         window.location.href = "admin.html";
                     }
 

@@ -90,10 +90,10 @@ function editProduct(id) {
                 // editProductPost()
             };
             getCategory();
-            // getProductByPage(0)
+            getProductByPage(0)
         }
     })
-    event.preventDefault();
+    // event.preventDefault();
 }
 
 //hàm cập nhật thông tin product data
@@ -120,13 +120,13 @@ function editProductPost() {
     $.ajax({
         contentType : false,
         processData : false,
-        type: "PUT",
-        data: JSON.stringify(newProduct),
+        type: "POST",
+        data: formData,
         url: `http://localhost:8095/api/products/${index}`,
         success: function () {
-            // getProductByPage(0)
-            // displayProduct(newProduct)
-            getProduct();
+            getProductByPage(0)
+            // // displayProduct(newProduct)
+            // getProduct();
         }
     });
     event.preventDefault();
